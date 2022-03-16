@@ -1,46 +1,42 @@
-import React from 'react'
+
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import itemListContainer from '../../itemLisContainer/ItemListContainer'
 
 function NavBar() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">ACCESORIES-JM</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">INICIO</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">NOVEDADES</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            ACCESORIOS
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Fundas</a></li>
-              <li><a class="dropdown-item" href="#">Auriculares</a></li>
-              <li><hr class="dropdown-divider"/></li>
-              <li><a class="dropdown-item" href="#">Celulares</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">COMMINGSOON</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  <Container>
+  <Navbar.Brand href="#home">JAMS-ACCESORIES</Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+    <Nav className="me-auto">
+      <Nav.Link href="#features">Tablets</Nav.Link>
+      <Nav.Link href="#pricing">Celulares</Nav.Link>
+      <NavDropdown title="Accesorios" id="collasible-nav-dropdown">
+        <NavDropdown.Item href="#action/3.1">Fundas</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">Auriculares</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Cargadores</NavDropdown.Item>
+      </NavDropdown>
+    </Nav>
+    <Nav>
+
+      <Nav.Link eventKey={2} href="#memes">
+          
+      <img className='w-25' src='https://i.pinimg.com/474x/f5/bd/cb/f5bdcb14bb2affdc58660f43281daadd.jpg' alt="esto es un icono" />
+      </Nav.Link>
+    </Nav>
+  </Navbar.Collapse>
+  </Container>
+</Navbar>
+
 
 
   )
 }
+
+
 
 export default NavBar

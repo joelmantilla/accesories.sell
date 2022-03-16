@@ -1,14 +1,25 @@
 import logo from './logo.svg';
 import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './itemLisContainer/ItemListContainer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
+
+
+
 function App() {
+
+let titulo = 'HOLA' ;
+
   return (
     <div className="App">
       <header className="App-header">
         <NavBar/>
+
+        <ItemListContainer saludo={ titulo } subProp='MUNDO'/>
+
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -25,5 +36,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;
