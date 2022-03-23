@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.item-list-container {
+  width: 100%;
+  min-height: 60vh;
+  padding: 30px;
+  margin-bottom: 60px;
+  background-color: rgba(245, 162, 39, 0.363);
+
+}
