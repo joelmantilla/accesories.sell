@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './itemLisContainer/ItemListContainer';
+import ItemListContainer from './Container/itemLisContainer/ItemListContainer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemList from './components/item/ItemList';
+import ItemDetailContainer from './Container/ItemDetailContainer/ItemDetailContainer';
+
 
 
 
@@ -22,6 +24,7 @@ let titulo = 'ESTO ES REACT JS' ;
         <ItemList/>
         </section>
         
+        <ItemDetailContainer/>
 
         <img src={logo} className="App-logo" alt="logo" />
         <p>

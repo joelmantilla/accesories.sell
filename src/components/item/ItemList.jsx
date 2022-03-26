@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Item from './Item';
-import { productList } from './list.js';
+
 
 
 import './Item.css' 
+import { productList } from './list';
+
+
+
+
+export const getProducts = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(productList);
+  }, 4000);
+});
+
 
 const ItemList = () => {
   
     const [products, setProducts] = useState([]);
-
-
-  const getProducts = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(productList);
-    }, 4000);
-  });
+    const [ loading, setLoading] = useState( true)
 
   const getProductsFromDB = async () => {
     try {
@@ -24,6 +29,7 @@ const ItemList = () => {
       console.log(error);
       alert('En este momento no so podra mostrar estos productos');
     }
+    finally {setLoading(false)}
   };
 
 
