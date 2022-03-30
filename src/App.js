@@ -1,30 +1,24 @@
 import logo from './logo.svg';
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './Container/itemLisContainer/ItemListContainer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemList from './components/item/ItemList';
 import ItemDetailContainer from './Container/ItemDetailContainer/ItemDetailContainer';
+import RoutesApp from './RoutesApp';
+
 
 
 
 
 function App() {
 
-let titulo = 'ESTO ES REACT JS' ;
+/* let titulo = 'ESTO ES REACT JS' ; */
 
   return (
     <div className="App">
       <header className="App-header">
-        <NavBar/>
-
-        <ItemListContainer saludo={ titulo } subProp='MUNDO'/>
-
-        <section className="item-list-container">
-        <ItemList/>
-        </section>
         
-        <ItemDetailContainer/>
+        <RoutesApp/>
+
 
         <img src={logo} className="App-logo" alt="logo" />
         <p>

@@ -1,4 +1,6 @@
+
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Item from './Item';
 
 
@@ -21,8 +23,28 @@ const ItemList = () => {
     const [products, setProducts] = useState([]);
     const [ loading, setLoading] = useState( true)
 
+    const {colorId} = useParams()
+
+    
+
   const getProductsFromDB = async () => {
+    
+
+ if (colorId) {
+   
+ 
     try {
+      const resultado = await getProducts;
+      setProducts(resultado.filter(item => item.color === colorId));
+    } catch (error) {
+      console.log(error);
+      alert('En este momento no so podra mostrar estos productos');
+    }
+    finally {setLoading(false)}
+
+  } else {
+   try {
+
       const resultado = await getProducts;
       setProducts(resultado);
     } catch (error) {
@@ -30,15 +52,24 @@ const ItemList = () => {
       alert('En este momento no so podra mostrar estos productos');
     }
     finally {setLoading(false)}
+
+  }
+    
   };
+
+  
 
 
   useEffect(() => {
+
     getProductsFromDB();
-  }, []); 
+  }, [colorId]); 
+
+  console.log(colorId)
 
   return (
-    <div className="Ficha">
+    <section className="item-list-container">
+      <div className="Ficha">
       {
         
         products.length ? ( 
@@ -68,7 +99,10 @@ const ItemList = () => {
         ) 
       }
     </div>
+    </section>
   );
 };
+
+
 
 export default ItemList;

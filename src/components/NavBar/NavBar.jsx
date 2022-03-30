@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import { NavLink } from 'react-router-dom'
 
 
 function NavBar() {
@@ -13,8 +14,9 @@ function NavBar() {
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <Nav.Link href="#features">Tablets</Nav.Link>
-      <Nav.Link href="#pricing">Celulares</Nav.Link>
+      <NavLink className="btn btn-outline-primary btn-block" to="/color/azul">auricular azul</NavLink>
+      <NavLink className="btn btn-outline-primary btn-block" to="/color/blanco">auricular blanco</NavLink>
+      <NavLink className="btn btn-outline-primary btn-block" to="/color/verde">auricular verde</NavLink>
       <NavDropdown title="Accesorios" id="collasible-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Fundas</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Auriculares</NavDropdown.Item>
@@ -23,10 +25,10 @@ function NavBar() {
     </Nav>
     <Nav>
 
-      <Nav.Link eventKey={2} href="#memes">
+      <NavLink to='/item'>
           
       <img className='w-25' src='https://i.pinimg.com/474x/f5/bd/cb/f5bdcb14bb2affdc58660f43281daadd.jpg' alt="esto es un icono" />
-      </Nav.Link>
+      </NavLink>
     </Nav>
   </Navbar.Collapse>
   </Container>
