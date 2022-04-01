@@ -5,7 +5,7 @@ export const productList = [
       price: '$1500',
       Imagen:
         'https://i.blogs.es/25be06/auricularesjugonesap/450_1000.jpg',
-      stock: 10,
+      stock: 9,
       id: "1",
     },
     {
@@ -14,7 +14,7 @@ export const productList = [
       price: '$1000',
       Imagen:
         'https://i.blogs.es/2e14a3/black-and-white-razer-gaming-headset-hanging-on-white-159463/1366_2000.jpg',
-      stock: 10,
+      stock: 7,
       id: "2",
     },
     {

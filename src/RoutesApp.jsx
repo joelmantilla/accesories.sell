@@ -5,6 +5,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemList from './components/item/ItemList';
 import ItemDetailContainer from './Container/ItemDetailContainer/ItemDetailContainer';
+import Cart from './components/cart/cart';
 
 
 
@@ -26,6 +27,7 @@ let titulo = 'ESTO ES REACT JS' ;
         path="/color/:colorId"
         element={ <ItemList saludo={ titulo } subProp='MUNDO'/>}/>
         
+        <Route path="/cart" element={<Cart/>}/>
 
         <Route path="/item/:itemId" element={<ItemDetailContainer/>}/>
 

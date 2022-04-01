@@ -25,7 +25,7 @@ function NavBar() {
     </Nav>
     <Nav>
 
-      <NavLink to='/item'>
+      <NavLink to='/cart'>
           
       <img className='w-25' src='https://i.pinimg.com/474x/f5/bd/cb/f5bdcb14bb2affdc58660f43281daadd.jpg' alt="esto es un icono" />
       </NavLink>
