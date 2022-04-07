@@ -1,53 +1,33 @@
-import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react'
 
-import './ItemCount.css';
+const ItemCount = ({ initial, stock, onAdd }) => {
+    const [ count, setCount ] = useState(initial)
 
-const ItemCount = () => {
-  const initial = 1; 
-  const stock = 10; 
+    const sumar = () => {
+        if (count < stock) {
+            setCount( count + 1 )
+        }
+    }
+    const restar = () => {
+        if (count > initial) {
+            setCount( count - 1 )
+        }
+    }
 
-  
-  const [qty, setQty] = useState(initial);
+    const agregar = () => {
+        onAdd( count )
+    }
 
-  const onAdd = (qty) => {
-    alert(`Agregaste ${qty} productos`);
-  };
+    return (
+        <div>
+            <button onClick={restar}> - </button>
+            <label> { count } </label>
+            <button onClick={sumar}> + </button><br />
+            <button onClick={ agregar }>Add to Cart</button>
+        </div>
+    )
+}
 
-  const addProduct = (num) => {
-    setQty(qty + num);
-  };
-
-  return (
-    <div className="Contador">
-      <div className="SumaResta">
-        <button
-          className="Botones"
-          onClick={() => addProduct(-1)}
-          disabled={qty === initial ? true : null}
-        >
-          -
-        </button>
-        <span className="Variante">{qty}</span>
-        <button
-          className="Botones"
-          onClick={() => addProduct(+1)}
-          disabled={qty === stock ? true : null}
-        >
-          +
-        </button>
-      </div>
-
-      <button
-        className="button-resultado"
-        onClick={() => onAdd(qty)}
-        disabled={stock === 0 ? true : null}
-      >
-        Añadir
-      </button>
-    </div>
-  );
-};
 
 export default ItemCount;
 

@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemList from './components/item/ItemList';
 import ItemDetailContainer from './Container/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/cart/cart';
+import CartContextProvider from './context/cartContext';
+
 
 
 
@@ -15,7 +17,9 @@ function RoutesApp() {
 let titulo = 'ESTO ES REACT JS' ;
 
   return (
+
     <BrowserRouter>
+    <CartContextProvider>
     <NavBar/>
     <Routes>
     
@@ -34,7 +38,7 @@ let titulo = 'ESTO ES REACT JS' ;
         <Route path="/*" element={<Navigate to='/' replace/> } />
 
     </Routes>
-    
+    </CartContextProvider>
     </BrowserRouter>
   );
 }

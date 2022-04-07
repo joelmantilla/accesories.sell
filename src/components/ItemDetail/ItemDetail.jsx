@@ -1,17 +1,35 @@
 
+
+import { useCartContext } from "../../context/cartContext";
 import Intercambiabilidad from "../intercambiabilidad/Intercambiabilidad";
+import ItemCount from "../ItemCount/ItemCount";
 
 
 
 function ItemDetail  ({producto})  {
     
     
+const {addToCart, cartList} = useCartContext()
 
+
+
+
+    function onAdd(cant) {
+        
+        addToCart({ ...producto, cantidad: cant})
+    }
+    
+    console.log(cartList)
+
+
+    
+
+    
     return(
         <>
-        <div >   
+         
             <img src={producto.Imagen} className="w-25"/>
-        </div>
+        
 
         <div >   
             {producto.name}
@@ -25,8 +43,10 @@ function ItemDetail  ({producto})  {
             {producto.price}
         </div>
         
-        <Intercambiabilidad/>
+        <ItemCount initial={1} stock={10} onAdd={onAdd}/>
+        
         </>
+        
     )
 }
 
