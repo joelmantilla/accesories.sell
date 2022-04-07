@@ -8,17 +8,27 @@ export const useCartContext = () => useContext(CartContext)
 
 function CartContextProvider({children})  {
 
-    
+
 
     const [cartList, setCartList] = useState([])
     
 
     const addToCart = (item) => {
-        setCartList([
-            ...cartList,
-            item
+        const existeElemento = cartList.find(elemento => elemento.id === item.id);
+        if (existeElemento){
+            existeElemento.cantidad = existeElemento.cantidad + item.cantidad
+
             
-        ])
+        } else {
+            setCartList([
+                ...cartList,
+                item
+            ])
+
+        }
+
+            
+        
 
     }
 

@@ -14,8 +14,14 @@ const ItemCount = ({ initial, stock, onAdd }) => {
         }
     }
 
-    const agregar = () => {
+    const agregar = ({handleInter}) => {
         onAdd( count )
+        return (<button 
+        className="btn btn-outline-danger" 
+        onClick={handleInter}
+    >Agregar Al carrito</button>)
+        
+       
     }
 
     return (

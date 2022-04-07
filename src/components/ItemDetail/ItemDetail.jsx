@@ -1,7 +1,8 @@
 
 
+import { useState } from "react";
 import { useCartContext } from "../../context/cartContext";
-import Intercambiabilidad from "../intercambiabilidad/Intercambiabilidad";
+import Botones1 from "../intercambiabilidad/Intercambiabilidad";
 import ItemCount from "../ItemCount/ItemCount";
 
 
@@ -21,12 +22,15 @@ const {addToCart, cartList} = useCartContext()
     
     console.log(cartList)
 
+    const [inputType, setInputType ] = useState('button')
 
+    const handleInter=()=>{
+        setInputType('input')
+    }
     
-
-    
-    return(
+    return (
         <>
+        
          
             <img src={producto.Imagen} className="w-25"/>
         
@@ -42,13 +46,27 @@ const {addToCart, cartList} = useCartContext()
         <div >   
             {producto.price}
         </div>
+        {
+                inputType === 'ItemCount' ? 
+
+        <Botones1/>
+        :
+        <ItemCount handleInter={handleInter} initial={1} stock={10} onAdd={onAdd} />
+        }
+        {/* <button 
+                className="btn btn-outline-danger" 
+                onClick={handleInter}
+            >Agregar Al carrito</button> */}
         
-        <ItemCount initial={1} stock={10} onAdd={onAdd}/>
         
         </>
-        
     )
 }
+
+    
+
+    
+    
 
 
 export default ItemDetail
