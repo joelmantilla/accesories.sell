@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Item from './Item';
 
 
-
+import {collection,getDocs, getFirestore, limit, orderBy, query, where} from 'firebase/firestore'
 import './Item.css' 
 import { productList } from './list';
 
@@ -21,16 +21,37 @@ export const getProducts = new Promise((resolve) => {
 const ItemList = () => {
   
     const [products, setProducts] = useState([]);
+   
     const [ loading, setLoading] = useState( true)
 
     const {colorId} = useParams()
 
     
+   
 
-  const getProductsFromDB = async () => {
+    
+   
+     
+    /* useEffect(()=> {
+      const queryDb = getFirestore()
+      const queryCollection = collection(queryDb ,'Items')
+      const queryFilter = query(queryCollection, 
+        
+        limit()
+        
+        )
+
+      getDocs(queryFilter)
+      .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ... item.data()}))))
+      .catch (error => console.log(error))
+      .finally(() => setLoading(false)) 
+    }, []) */
+
+    
+  /* const getProductsFromDB = async () => {/*  */
     
 
- if (colorId) {
+ /* if (colorId) {
    
  
     try {
@@ -40,9 +61,9 @@ const ItemList = () => {
       console.log(error);
       alert('En este momento no so podra mostrar estos productos');
     }
-    finally {setLoading(false)}
+    finally {setLoading(false)} */
 
-  } else {
+  /* } else {
    try {
 
       const resultado = await getProducts;
@@ -53,19 +74,32 @@ const ItemList = () => {
     }
     finally {setLoading(false)}
 
-  }
+  } */
     
-  };
+  useEffect(()=> {
+    const queryDb = getFirestore()
+    const queryCollection = collection(queryDb ,'Items')
+    const queryFilter = query(queryCollection, 
+      
+      limit()
+      
+      )
+
+    getDocs(queryFilter)
+    .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ... item.data()}))))
+    .catch (error => console.log(error))
+    .finally(() => setLoading(false)) 
+  }, [])
 
   
 
 
-  useEffect(() => {
+  /* useEffect(() => {
 
     getProductsFromDB();
   }, [colorId]); 
-
-  console.log(colorId)
+*/
+  console.log(colorId) 
 
   return (
     <section className="item-list-container">
@@ -101,7 +135,10 @@ const ItemList = () => {
     </div>
     </section>
   );
+    
 };
+
+    
 
 
 
