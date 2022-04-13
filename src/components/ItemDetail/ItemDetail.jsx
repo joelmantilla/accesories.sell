@@ -21,12 +21,10 @@ const {addToCart, cartList} = useCartContext()
     }
     
     console.log(cartList)
-
-    const [inputType, setInputType ] = useState('button')
-
-    const handleInter=()=>{
-        setInputType('input')
-    }
+    
+    
+    
+    
     
     return (
         <>
@@ -46,22 +44,15 @@ const {addToCart, cartList} = useCartContext()
         <div >   
             {producto.price}
         </div>
-        {
-                inputType === 'ItemCount' ? 
+        
+        <ItemCount   initial={1} stock={10} onAdd={onAdd} />
 
-        <Botones1/>
-        :
-        <ItemCount handleInter={handleInter} initial={1} stock={10} onAdd={onAdd} />
-        }
-        {/* <button 
-                className="btn btn-outline-danger" 
-                onClick={handleInter}
-            >Agregar Al carrito</button> */}
         
         
         </>
     )
 }
+
 
     
 

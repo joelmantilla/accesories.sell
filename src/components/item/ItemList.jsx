@@ -14,7 +14,7 @@ import { productList } from './list';
 export const getProducts = new Promise((resolve) => {
   setTimeout(() => {
     resolve(productList);
-  }, 4000);
+  }, 3000);
 });
 
 

@@ -23,7 +23,9 @@ function ItemDetailContainer(){
     return (
               <>
               {
-                  loading? 'Cargando...' : <ItemDetail producto = {producto}/>
+                  loading? <h2>Cargando...</h2>
+                  : 
+                  <ItemDetail producto = {producto}/>
               }
             
         </>

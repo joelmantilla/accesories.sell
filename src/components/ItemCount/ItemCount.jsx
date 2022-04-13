@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import Botones1 from '../intercambiabilidad/Intercambiabilidad'
 
 const ItemCount = ({ initial, stock, onAdd }) => {
     const [ count, setCount ] = useState(initial)
@@ -14,14 +15,15 @@ const ItemCount = ({ initial, stock, onAdd }) => {
         }
     }
 
-    const agregar = ({handleInter}) => {
+    const agregar = () => {
         onAdd( count )
-        return (<button 
-        className="btn btn-outline-danger" 
-        onClick={handleInter}
-    >Agregar Al carrito</button>)
         
-       
+        
+    }
+    const [inputType, setInputType ] = useState('button')
+
+    const handleInter=()=>{
+        setInputType('input')
     }
 
     return (
@@ -29,8 +31,14 @@ const ItemCount = ({ initial, stock, onAdd }) => {
             <button onClick={restar}> - </button>
             <label> { count } </label>
             <button onClick={sumar}> + </button><br />
-            <button onClick={ agregar }>Add to Cart</button>
-        </div>
+            
+        {
+            inputType === 'button' ? 
+            <button onClick={ (handleInter),agregar }>Agregar</button>
+            : 
+                <Botones1 />
+        }
+    </div>
     )
 }
 

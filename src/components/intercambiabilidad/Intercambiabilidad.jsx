@@ -1,10 +1,9 @@
-
 import { Link } from "react-router-dom";
 
 
 
 
-const Botones1= ()=> {
+export const Botones1= ()=> {
 
     return (
         <>

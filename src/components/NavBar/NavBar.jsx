@@ -4,9 +4,15 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import { NavLink } from 'react-router-dom'
+import { useCartContext } from '../../context/cartContext'
+
 
 
 function NavBar() {
+
+
+const {cantidadTotalItem} = useCartContext()
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
@@ -28,6 +34,7 @@ function NavBar() {
       <NavLink to='/cart'>
           
       <img className='w-25' src='https://i.pinimg.com/474x/f5/bd/cb/f5bdcb14bb2affdc58660f43281daadd.jpg' alt="esto es un icono" />
+      { cantidadTotalItem() !== 0 && `${cantidadTotalItem()}`} 
       </NavLink>
     </Nav>
   </Navbar.Collapse>
