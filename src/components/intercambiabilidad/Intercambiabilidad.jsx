@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import './Intercambiabilidad.css';
 
 
 
@@ -9,13 +10,13 @@ export const Botones1= ()=> {
         <>
         <Link to='/cart' >
             <button 
-                className="btn btn-outline-primary" 
+                className="Cart" 
                 onClick={()=>console.log('ir a cart') } 
             >ir al Cart</button>
         </Link>
         <Link to='/*' >
             <button 
-                className="btn btn-outline-primary" 
+                className="List" 
                 onClick={()=>console.log('ir a cart') } 
             >Seguir Comprando</button>
         </Link>

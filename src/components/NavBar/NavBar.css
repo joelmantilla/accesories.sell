@@ -1,0 +1,15 @@
+.NavBar{
+    text-decoration: none;
+    color: rgb(158, 158, 158);
+
+    
+}
+.NavBar:hover{
+    text-shadow: 0 1px 1px rgba(255, 241, 241, 0.5);
+	color: rgb(82, 82, 82);
+}
+
+.w-25{
+    text-decoration: none;
+}
+

@@ -1,8 +1,8 @@
 
 
-import { useState } from "react";
+import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { useCartContext } from "../../context/cartContext";
-import Botones1 from "../intercambiabilidad/Intercambiabilidad";
+import './ItemDetail.css'
 import ItemCount from "../ItemCount/ItemCount";
 
 
@@ -27,29 +27,35 @@ const {addToCart, cartList} = useCartContext()
     
     
     return (
-        <>
+
+        <section className="cuadro">
+        <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src={producto.Imagen} />
+  <Card.Body>
+    
+    
+  </Card.Body>
+  <ListGroup className="list-group-flush">
+    <ListGroupItem> {producto.name}</ListGroupItem>
+    <ListGroupItem> {producto.color}</ListGroupItem>
+    <ListGroupItem>{producto.price}</ListGroupItem>
+  </ListGroup>
+  
+  <ItemCount  initial={1} stock={10} onAdd={onAdd} />
+</Card>
+        
         
          
-            <img src={producto.Imagen} className="w-25"/>
+            
         
-
-        <div >   
-            {producto.name}
-        </div>
-
-        <div >   
-            {producto.color}
-        </div>
-
-        <div >   
-            {producto.price}
-        </div>
-        
-        <ItemCount   initial={1} stock={10} onAdd={onAdd} />
 
         
         
-        </>
+        
+
+        
+        
+        </section>
     )
 }
 

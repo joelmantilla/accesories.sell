@@ -1,4 +1,4 @@
-
+import './NavBar.css'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -16,17 +16,16 @@ const {cantidadTotalItem} = useCartContext()
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Container>
-  <Navbar.Brand href="#home">JAMS-ACCESORIES</Navbar.Brand>
+  <Navbar.Brand className="NavBar" to="/*">JAMS-ACCESORIES</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="me-auto">
-      <NavLink className="btn btn-outline-primary btn-block" to="/color/azul">auricular azul</NavLink>
-      <NavLink className="btn btn-outline-primary btn-block" to="/color/blanco">auricular blanco</NavLink>
-      <NavLink className="btn btn-outline-primary btn-block" to="/color/verde">auricular verde</NavLink>
-      <NavDropdown title="Accesorios" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Fundas</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Auriculares</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Cargadores</NavDropdown.Item>
+    <NavLink className="NavBar" to="/*">Tienda</NavLink>
+      
+      <NavDropdown className="NavBar" title="Accesorios" id="collasible-nav-dropdown">
+        <NavDropdown.Item as={NavLink} to="/category/Auriculares">Auricular</NavDropdown.Item>
+        <NavDropdown.Item as={NavLink} to="/category/Fundas">Fundas</NavDropdown.Item>
+        <NavDropdown.Item as={NavLink} to="/category/Celulares">Celulares</NavDropdown.Item>
       </NavDropdown>
     </Nav>
     <Nav>

@@ -1,5 +1,19 @@
 # Getting Started with Create React App
 
+## Libreria Externas
+
+ESTAS SON TODAS LAS LIBRERIAS EXTERNA QUE SE A USADO
+| Plugin | README |
+| ------ | ------ |
+| Boostrap | [Boostrap/react/README.md][PlDb] |
+| GitHub | [plugins/github/README.md][PlGh] |
+| Google Drive | [plugins/googledrive/README.md][PlGd] |
+| fontWase | [plugins/onedrive/README.md][PlOd] |
+| Medium | [plugins/medium/README.md][PlMe] |
+| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

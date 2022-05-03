@@ -7,6 +7,7 @@ import Item from './Item';
 import {collection,getDocs, getFirestore, limit, orderBy, query, where} from 'firebase/firestore'
 import './Item.css' 
 import { productList } from './list';
+import BootstrapCarousel from '../carrusel/BootstrapCarousel';
 
 
 
@@ -28,55 +29,7 @@ const ItemList = () => {
 
     
    
-
-    
-   
-     
-    /* useEffect(()=> {
-      const queryDb = getFirestore()
-      const queryCollection = collection(queryDb ,'Items')
-      const queryFilter = query(queryCollection, 
-        
-        limit()
-        
-        )
-
-      getDocs(queryFilter)
-      .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ... item.data()}))))
-      .catch (error => console.log(error))
-      .finally(() => setLoading(false)) 
-    }, []) */
-
-    
-  /* const getProductsFromDB = async () => {/*  */
-    
-
- /* if (colorId) {
-   
- 
-    try {
-      const resultado = await getProducts;
-      setProducts(resultado.filter(item => item.color === colorId));
-    } catch (error) {
-      console.log(error);
-      alert('En este momento no so podra mostrar estos productos');
-    }
-    finally {setLoading(false)} */
-
-  /* } else {
-   try {
-
-      const resultado = await getProducts;
-      setProducts(resultado);
-    } catch (error) {
-      console.log(error);
-      alert('En este momento no so podra mostrar estos productos');
-    }
-    finally {setLoading(false)}
-
-  } */
-    
-  useEffect(()=> {
+useEffect(()=> {
     const queryDb = getFirestore()
     const queryCollection = collection(queryDb ,'Items')
     const queryFilter = query(queryCollection, 
@@ -87,22 +40,63 @@ const ItemList = () => {
 
     getDocs(queryFilter)
     .then(resp => setProducts(resp.docs.map(item => ({id: item.id, ... item.data()}))))
-    .catch (error => console.log(error))
-    .finally(() => setLoading(false)) 
+    .catch (error => alert(error))
+    .finally(() => setLoading(true)) 
   }, [])
 
+    
+   
+     
+    
+
+    
+  const getProductsFromDB = async () => {
+    
+
+ if (colorId) {
+   
+ 
+    try {
+      const resultado = await getProducts;
+      setProducts(resultado.filter(item => item.category === colorId));
+    } catch (error) {
+      
+      alert('En este momento no so podra mostrar estos productos');
+    }
+    finally {setLoading(true)} 
+
+  } else {
+   try {
+
+      const resultado = await getProducts;
+      setProducts(resultado);
+    } catch (error) {
+      
+      alert('En este momento no so podra mostrar estos productos');
+    }
+    finally {setLoading(false)}
+
+  }
+}
+    
+  
   
 
 
-  /* useEffect(() => {
+  useEffect(() => {
 
     getProductsFromDB();
   }, [colorId]); 
-*/
-  console.log(colorId) 
+
+
 
   return (
+    
+    
+  
+
     <section className="item-list-container">
+      <div className="Carousel"><BootstrapCarousel/></div>
       <div className="Ficha">
       {
         
@@ -113,6 +107,9 @@ const ItemList = () => {
               products.map((product) => {
                 
                 return (
+                  
+                  
+                  
                   <div key={product.id}>
                     <Item
                       name={product.name}

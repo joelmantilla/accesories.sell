@@ -1,9 +1,15 @@
+import { useState } from 'react'
 import { useCartContext } from "../../context/cartContext"
 import { addDoc, collection, doc, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch } from 'firebase/firestore'
+import './cart.css'
 
 
 function Cart() {
-
+  const[formData, setFormData] = useState({
+    email: '',
+    phone:'',
+    name:''
+  })
   const{ cartList,removeCart,precioTotal,eliminarItem  } = useCartContext()
 
   const generarOrden = async (e) => {
@@ -12,7 +18,7 @@ function Cart() {
         // Nuevo objeto de orders    
         let orden = {}      
     
-        orden.buyer = { name: 'joel ', email: 'mantillajoel5@gmail.com', phone: '1133669843' }
+        orden.buyer = formData
         orden.total = precioTotal()
     
         orden.items = cartList.map(cartItem => {
@@ -27,23 +33,9 @@ function Cart() {
         // creación de un documento
         const db = getFirestore() 
         const queryCollection = collection(db, 'orders')
-         addDoc(queryCollection, orden)
-        .then(({id}) => alert( id ))
-        // .catch
-        // .finally
-
-        // update, modificar un archivo 
-
-        // const queryUpdate =  doc(db, 'productos', '4jNlWgWGlGSO7WGASegG')
-        // updateDoc(queryUpdate, {
-        //     stock : 100
-        // })
-        // .then(resp => console.log('actualizado'))
-
-
-        // console.log(orden)
-
-        // actualizar el stock
+         await addDoc(queryCollection, orden)
+         .then(({id}) => alert('su numero de id es :' + id ))
+       
         const queryCollectionStock = collection(db, 'Items')
 
         const queryActulizarStock = await query(
@@ -60,30 +52,60 @@ function Cart() {
         .finally(()=> console.log('actulalizado'))
 
         batch.commit()
+
+        
 }
 
-  
-
+  const handleChange=(event) => {
+    setFormData({
+      ...formData,
+      [event.target.name] : event.target.value
+    })
+  }
+console.log(formData)
     return (
-      <div className="">
+      <div className="Carrito">
         {cartList.map(prod => 
         
         <ul key={prod.id}>
-          <img src={prod.Imagen} className="w-25"/>
+          <img style={{height: 250 }} src={prod.Imagen} className="w-25"/>
           <li>nombre:{prod.name}</li>
           <li>cantidad:{prod.cantidad}</li>
           <li>total por unidad:{prod.cantidad * prod.price}</li>
           
-          <button onClick={() => eliminarItem(prod.id) }> - </button> <hr></hr>
-          
+          <div className='button'> 
+          <button className='Button-' onClick={() => eliminarItem(prod.id) }> -</button> <hr></hr>
+          </div>
           </ul>)}
         
         {precioTotal() !== 0 &&  <label> El precio total es : {precioTotal()} </label> }
           <button className="btn btn-outline-warning" onClick={removeCart}>Vaciar Carrito</button>
-          <button className="btn btn-outline-warning" onClick={generarOrden}>Generar orden</button>
-        </div>
+          
+          <form
+            
+            >
+              
+            <input name='name' type="text" placeholder='ingrese el nombre' 
+            onChange={handleChange} 
+            value={formData.name}/>
+
+            <input name='email' type="email" placeholder='ingrese el email' onChange={handleChange} 
+            value={formData.email}/>
+
+            <input name='phone' type="number" placeholder='ingrese el phone' onChange={handleChange} 
+            value={formData.phone}/>
+          
+          </form>
+          <button onClick={generarOrden} className="btn btn-outline-warning" >Generar orden</button>
+          
+         
+          </div>
+        
+        
+        
     )
   }
+  
   
   export default Cart
   

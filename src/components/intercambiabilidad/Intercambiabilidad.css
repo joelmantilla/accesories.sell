@@ -1,0 +1,37 @@
+.Cart{
+    
+        color: #318aac !important;
+        border-radius: 5px red;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 0.5em 1.2em;
+        background: rgba(0,0,0,0);
+        border: 2px solid;
+        border-color: #318aac;
+        transition: all 1s ease;
+        position: relative;
+      }
+      .Cart:hover {
+        background: #318aac;
+        color: #fff !important;
+      }
+
+
+.List{
+   
+        color: #318aac !important;
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 0.5em 1.2em;
+        background: rgba(0,0,0,0);
+        border: 2px solid;
+        border-color: #318aac;
+        transition: all 1s ease;
+        position: relative;
+      }
+      .List:hover {
+        background: #318aac;
+        color: #fff !important;
+      }
+

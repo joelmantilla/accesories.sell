@@ -18,7 +18,7 @@ function App() {
         <RoutesApp/>
 
 
-        <img src={logo} className="App-logo" alt="logo" />
+        
         
       </header>
     </div>

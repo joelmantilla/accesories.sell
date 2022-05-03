@@ -2,16 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -42,6 +33,13 @@
   min-height: 60vh;
   padding: 30px;
   margin-bottom: 60px;
-  background-color: rgba(245, 162, 39, 0.363);
+  
 
+}
+
+.Body{
+  width: 100%;
+  height: 100%;
+  background-image: url(https://w0.peakpx.com/wallpaper/430/272/HD-wallpaper-blue-fire-fume-flame-black-blue.jpg);
+ 
 }

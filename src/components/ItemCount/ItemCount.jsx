@@ -1,8 +1,16 @@
 import {useState} from 'react'
 import Botones1 from '../intercambiabilidad/Intercambiabilidad'
+import './ItemCount.css'
+
 
 const ItemCount = ({ initial, stock, onAdd }) => {
     const [ count, setCount ] = useState(initial)
+    const [button, setButton] = useState(false)
+
+    const handleButton = () => {
+        setButton(true)
+        onAdd(count)
+    }
 
     const sumar = () => {
         if (count < stock) {
@@ -15,26 +23,28 @@ const ItemCount = ({ initial, stock, onAdd }) => {
         }
     }
 
-    const agregar = () => {
-        onAdd( count )
-        
-        
-    }
-    const [inputType, setInputType ] = useState('button')
+    
+    
 
-    const handleInter=()=>{
-        setInputType('input')
+    
+    const AgregarButton = ({handleButton}) => {
+        return (
+            <button className='Purchase'  onClick={handleButton}> 
+                Comprar
+            </button>
+        )
     }
+    
 
     return (
         <div>
-            <button onClick={restar}> - </button>
-            <label> { count } </label>
-            <button onClick={sumar}> + </button><br />
+            <button className='Subtraction' onClick={restar}> - </button>
+            <label className='Number'> { count } </label>
+            <button className='Add' onClick={sumar}> + </button><br />
             
         {
-            inputType === 'button' ? 
-            <button onClick={ (handleInter),agregar }>Agregar</button>
+              button === false  ? 
+                <AgregarButton handleButton={handleButton}/>
             : 
                 <Botones1 />
         }

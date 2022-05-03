@@ -1,7 +1,9 @@
 import { useState } from 'react';
+
 import {BrowserRouter , Routes , Route, Navigate} from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
 import './App.css';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemList from './components/item/ItemList';
 import ItemDetailContainer from './Container/ItemDetailContainer/ItemDetailContainer';
@@ -12,15 +14,25 @@ import CartContextProvider from './context/cartContext';
 
 
 
+
+
+
+
+
+
 function RoutesApp() {
 
 let titulo = 'ESTO ES REACT JS' ;
 
   return (
-
-    <BrowserRouter>
+    <div className='Body'>
+    <BrowserRouter >
     <CartContextProvider>
+
     <NavBar/>
+
+    
+    
     <Routes>
     
         <Route 
@@ -28,7 +40,7 @@ let titulo = 'ESTO ES REACT JS' ;
         element={ <ItemList saludo={ titulo } subProp='MUNDO'/>}/>
 
         <Route 
-        path="/color/:colorId"
+        path="/category/:colorId"
         element={ <ItemList saludo={ titulo } subProp='MUNDO'/>}/>
         
         <Route path="/cart" element={<Cart/>}/>
@@ -40,6 +52,7 @@ let titulo = 'ESTO ES REACT JS' ;
     </Routes>
     </CartContextProvider>
     </BrowserRouter>
+    </div>
   );
 }
 
